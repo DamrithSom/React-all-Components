@@ -1,0 +1,40 @@
+.article {
+  background-color: darkslategray;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 10px;
+  margin: 5px 0px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+img {
+  width: 200px;
+  height: 250px;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  border-radius: 10px;
+}
+img:hover {
+  transform: scale(1.1); /* Scale the image */
+  opacity: 0.9; /* Slightly reduce opacity */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+h3,
+p,
+span {
+  color: beige;
+}
+h3 {
+  text-decoration: underline;
+}
+.allProduct {
+  display: flex;
+  gap: 5rem;
+  /* background-color: aqua; */
+  width: 80%;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}

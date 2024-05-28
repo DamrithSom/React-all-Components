@@ -1,0 +1,31 @@
+section {
+  /* display: flex;
+  flex-direction: column; */
+  /* display: grid; */
+  /* grid-template-columns: (1fr,1fr); */
+  align-items: center;
+  text-align: center;
+}
+.contianer{
+  /* display: grid;
+  grid-template-columns: (1fr,1fr); */
+  display: flex;
+  gap: 2rem;
+
+  /* background-color: aqua; */
+}
+.myProfile {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+article {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  height: 500px;
+  text-align: center;
+  background-color: deepskyblue;
+  border-radius: 10px;
+  padding: 10px;
+}

@@ -1,0 +1,23 @@
+import React from "react";
+import Poster from "./Poster";
+import "../components/Poster.css";
+const GroupPoster = () => {
+  return (
+    <>
+    <div className="contianer">
+      <Poster
+        i="https://static.vecteezy.com/system/resources/previews/009/926/227/non_2x/cute-shiba-inu-dog-holding-gold-coin-cartoon-icon-illustration-science-finance-flat-cartoon-concept-vector.jpg"
+        name="My Dogs1"
+      >
+        <button>Click me</button>
+      </Poster>
+      <Poster
+        i="https://img.freepik.com/free-vector/cute-dog-holding-gold-coin-cartoon-vector-icon-illustration-animal-finance-icon-concept-isolated_138676-4337.jpg?t=st=1715788446~exp=1715792046~hmac=ee9765eaec9265442c1ed7affc5a650e0a00f062a989de866f594fbb1df66915&w=826"
+        name="My Dogs2"
+      ></Poster>
+      </div>
+    </>
+  );
+};
+
+export default GroupPoster;
