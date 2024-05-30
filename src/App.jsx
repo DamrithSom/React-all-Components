@@ -1,11 +1,11 @@
 
 import React from "react";
-import GithubAPI from "./components/GithubAPI";
+import BookAPI from "./components/BookAPI";
 
 const App = () => {
   return (
     <>
-   <GithubAPI/>
+   <BookAPI/>
     </>
   );
 };
