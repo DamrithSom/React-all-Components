@@ -3,7 +3,7 @@ import React from "react";
 const BookAPI = (props) => {
   const urlAPI = "https://www.googleapis.com/books/v1/volumes?q=flowers";
   const [book, setBook] = React.useState([]);
-
+  const [isLogding, setIslogding] = React.useState(true)
   React.useEffect(() => {
     const foreachBook = async () => {
       const respone = await fetch(urlAPI);
@@ -15,6 +15,7 @@ const BookAPI = (props) => {
     } catch (error) {
       console.log(error);
     }
+    setIslogding(false)
     foreachBook();
   }, []);
 
