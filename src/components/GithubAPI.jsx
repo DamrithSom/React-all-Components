@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 const GithubAPI = () => {
   const urlAPI = "https://api.github.com/users";
   const [data, setData] = useState([]);
-  const [isLoading , setIsloading] = React.useState(true)
+  const [isLoading, setIsloading] = React.useState(true);
+  const [isError, setIsError] = React.useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -11,26 +12,39 @@ const GithubAPI = () => {
         // const Response = await responseData.json();
         // setData(Response);
 
-        const response = await axios(urlAPI)
+        const response = await axios(urlAPI);
         const data = response.data;
-        setData(data)
-        console.log(data)
+        setData(data);
       } catch (error) {
-        console.log(error.status);
+        console.log(error.response.status);
+        setIsError(true);
       }
     };
-    setIsloading(false)
+    setIsloading(false);
     fetchData();
   }, []);
-  if(isLoading)
-    {
-      return <h2 className="text-3xl text-blue-700 flex justify-center items-center min-h-screen">Loading ...</h2>
-    }
- 
+  if (isLoading) {
+    return (
+      <h2 className="text-3xl text-gray-400 flex justify-center items-center min-h-screen">
+        Loading ...
+      </h2>
+    );
+  }
+  if (isError) {
+    return (
+      <div class="flex flex-col items-center justify-center text-gray-400 mt-48">
+        <i class="fa-solid fa-circle-exclamation text-6xl mb-7"></i>
+        <h2 class="text-3xl mb-2">Oops! Something went wrong.</h2>
+        <p>
+          This page didn't load Google correctly. See the JavaScript console for
+          technical details.
+        </p>
+      </div>
+    );
+  }
+
   return (
-    
     <>
-  
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 p-4 w-5/6 m-auto">
         {data.map((user) => {
           const { id, avatar_url, html_url, login } = user;

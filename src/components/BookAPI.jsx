@@ -3,7 +3,8 @@ import React from "react";
 const BookAPI = (props) => {
   const urlAPI = "https://www.googleapis.com/books/v1/volumes?q=flowers";
   const [book, setBook] = React.useState([]);
-  const [isLogding, setIslogding] = React.useState(true)
+  const [isLogding, setIslogding] = React.useState(true);
+  const [search, setSearch] = React.useState("");
   React.useEffect(() => {
     const foreachBook = async () => {
       const respone = await fetch(urlAPI);
@@ -15,10 +16,20 @@ const BookAPI = (props) => {
     } catch (error) {
       console.log(error);
     }
-    setIslogding(false)
+    setIslogding(false);
     foreachBook();
   }, []);
 
+  const handler = (e) => {
+    setSearch(e.target.value);
+  };
+  const handlerClick = async () => {
+    const respone = await fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=${search}`
+    );
+    const data = await respone.json();
+    setBook(data.items);
+  };
   return (
     <div>
       {book.length === 0 ? (
@@ -32,6 +43,20 @@ const BookAPI = (props) => {
         <div className="bg-gray-900">
           {" "}
           (
+          <div className="w-5/6 m-auto p-4 flex justify-center items-center space-x-2">
+            <input
+              onChange={handler}
+              className="p-2 w-64 outline-none rounded-lg bg-gray-950 text-white placeholder-gray-500 shadow-lg"
+              type="text"
+              placeholder="Search ..."
+            />
+            <button
+              onClick={handlerClick}
+              className="p-2 bg-orange-500 text-white rounded-lg shadow-lg hover:bg-orange-600 transition duration-200"
+            >
+              Search
+            </button>
+          </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 p-4 w-5/6 m-auto">
             {book.map((n) => {
               const { id, volumeInfo } = n;
@@ -40,7 +65,7 @@ const BookAPI = (props) => {
                 publishedDate,
                 description,
                 imageLinks,
-                previewLink
+                previewLink,
               } = volumeInfo;
               return (
                 <div

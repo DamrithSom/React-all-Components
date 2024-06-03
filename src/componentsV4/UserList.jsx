@@ -1,6 +1,6 @@
 import React from "react";
 import Users from "./Users";
-import data from "../components/data";
+import data from "../componentsV4/data";
 
 const UserList = () => {
   const [userX, setUserX] = React.useState(data);
